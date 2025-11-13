@@ -18,13 +18,21 @@
         socket.on('disconnect', function() {
             console.log('conexion perdida');
         });
-
-
-        socket.emit('mensaje', {nombre: 'name'});
-
-        socket.on('mensaje', function(payload){
-            console.log('Escuchando', payload);
+        socket.emit('mensaje', {usuario: 'firefox'});
+        socket.on('registro', function(payload){
+            console.log(payload);
         });
+
+
+        socket.on('bands-sever', function(payload) {
+            console.clear();
+            console.table(payload);
+        });
+
+        socket.on('nuevo-mensaje', function(paylaod) {
+        //    console.log('statusPage');
+            console.log(payload);
+         });
     </script>
 </body>
 </html>

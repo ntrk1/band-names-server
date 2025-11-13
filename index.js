@@ -1,8 +1,11 @@
+const express = require('express');
+const path = require('path')
+require('dotenv').config();
+const app = express();
 
 //IMPORTACIONES
-require('dotenv').config();
-const express = require('express');
-const app = express();
+
+
 
 //INYECCION DEL PAQUETE SOCKET.IO
 const server = require('http').createServer(app);
@@ -13,14 +16,13 @@ require('./sockets/socket');
 
 
 //INYECCION DEL HTML
-const path = require('path')
 const publicPath = path.resolve(__dirname, 'public');
+app.use(express.static(publicPath));
 
 
 
 //MAIN
-app.use(express.static(publicPath));
 server.listen(process.env.PORT, (err) => {
-if (err) throw new Error(err);
-console.log('puertos', process.env.PORT)
+    if (err) throw new Error(err);
+    console.log('puertos', process.env.PORT)
 })
